@@ -25,7 +25,7 @@ function FirstPage() {
         localStorage.setItem('questions',JSON.stringify(info))
     },[info])
 
-    let [type,setType] = useState(false)
+    let [type,setType] = useState(false) 
 
     
 
