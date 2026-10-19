@@ -25,12 +25,12 @@ function FirstPage() {
         localStorage.setItem('questions',JSON.stringify(info))
     },[info])
 
-    let [type,setType] = useState(false) 
+    let [type,setType] = useState(0) 
 
     
 
     function update() {
-        if (proff == '' || phone == '' || date == '' || que == '' || fO == '' || sO == '' || tO == '' || foO == '') {
+        if (proff == '' || phone == '' || date == '' || que == '' || fO == '' || sO == '' || tO == '' || foO == '' || answer === '') {
             return alert('তথ্যের ঘরগুলো পূরণ করুন।')
         }
         setInfo((oldvalue) => {
@@ -73,8 +73,14 @@ function FirstPage() {
 
     return (
         <>
+
+
+                
+
+
+
             {
-               type === true
+               type === 1
                 ? <div>
                     <Container className=''>
                 <h1 className='text-center text-[45px] font-semibold mb-[50px]'>Input Field</h1>
@@ -117,7 +123,6 @@ function FirstPage() {
                     {
                         `Questios : ${info.length}`
                     }
-                    <button onClick={()=> setType(!type)}>Submit</button>
                 </div>
             </Container>
 
@@ -144,7 +149,13 @@ function FirstPage() {
                 }
             </Container>
                 </div>
-                :<SecondPage allQue={info}/>
+                :
+                 type === 2?<SecondPage allQue={info}/>
+                :<div className='flex flex-col w-[870px] mx-auto gap-y-[35px] mt-[20%]'>
+                <button className='font-[roboto] text-[22px] font-semibold bg-yellow-500 text-[#ffffff] py-[12px] px-[22px] rounded-[8px] cursor-pointer' onClick={()=> setType(1)}>পরীক্ষার্থীর পেজে যেতে চাইলে আমাকে ক্লিক করুন</button>
+                <button className='font-[roboto] text-[22px] font-semibold bg-yellow-500 text-[#ffffff] py-[12px] px-[22px] rounded-[8px] cursor-pointer'  onClick={()=> setType(2)}>প্রশ্নের পেজে যেতে চাইলে আমাকে ক্লিক করুন</button>
+            </div>
+                
             }
 
 
