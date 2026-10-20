@@ -13,13 +13,15 @@ function SecondPage({ allQue }) {
 
 
 
-  const [timeLeft, setTimeLeft] = useState(30 * 60 + 59);
+  const [timeLeft, setTimeLeft] = useState(29 * 60 + 59);
 
   let minute = Math.floor(timeLeft / 60);
   let second = timeLeft % 60;
 
   useEffect(() => {
-    if (timeLeft <= 0) return;
+    if (timeLeft <= 0){
+      return check()
+    }
 
     let counter = setTimeout(() => {
       setTimeLeft(oldTime => oldTime - 1);
